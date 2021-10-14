@@ -2,7 +2,7 @@ const { execSync } = require('child_process');
 
 function buildWasm(pkg, buildCommand, history_suffix, target_dir) {
     buildCommand.push(pkg);
-
+    
     const underscoredName = pkg.replace(/-/g, '_');
 
     console.log(`Building ${underscoredName}.wasm`);
@@ -31,6 +31,9 @@ switch (buildType)
         buildCommand =
         [
             'RUSTFLAGS="--cfg debug_cfg"',
+            'rustup',
+            'run',
+            'nightly',
             'cargo',
             'build',
             '--target',
@@ -44,6 +47,9 @@ switch (buildType)
         buildCommand =
         [
             'RUSTFLAGS="--cfg release_cfg"',
+            'rustup',
+            'run',
+            'nightly',
             'cargo',
             'build',
             '--target',
