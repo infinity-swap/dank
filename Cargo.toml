@@ -1,7 +1,7 @@
 [workspace]
 members = [
     "xtc",
-    "piggy-bank",
+#    "piggy-bank",
 #    History
     "xtc-history/xtc-history",
     "xtc-history/xtc-history-bucket",

@@ -1418,16 +1418,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "db8bcd96cb740d03149cbad5518db9fd87126a10ab519c011893b1754134c468"
 
 [[package]]
-name = "piggy-bank"
-version = "0.1.0"
-dependencies = [
- "async-std",
- "ic-cdk",
- "ic-kit",
- "serde",
-]
-
-[[package]]
 name = "pin-project-lite"
 version = "0.2.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
