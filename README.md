@@ -43,4 +43,4 @@ cargo test
 Dank © Fleek LLC 2021 - [License (GPL-3.0)](https://github.com/Psychedelic/dank/blob/main/LICENSE)
 
 # Make sure to install: 
- cargo install ic-cdk-optimizer
+cargo install ic-cdk-optimizer

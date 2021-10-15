@@ -217,6 +217,7 @@ async fn transfer_fee_zero() {
 async fn mint_fee() {
     use crate::ledger::*;
 
+
     let ctx = MockContext::new()
         .with_caller(mock_principals::alice())
         .with_msg_cycles(50_000_000_000)
@@ -226,6 +227,6 @@ async fn mint_fee() {
 
     assert_eq!(
         ctx.get::<Ledger>().balance(&mock_principals::alice()),
-        50_000_000_000 - compute_fee(50_000_000_000)
+        50_000_000_000 + DEFAULT_BALANCE - compute_fee(50_000_000_000)
     );
 }
