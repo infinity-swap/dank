@@ -44,3 +44,6 @@ Dank © Fleek LLC 2021 - [License (GPL-3.0)](https://github.com/Psychedelic/dank
 
 # Make sure to install: 
 cargo install ic-cdk-optimizer
+
+dfx deploy xtc --argument '("hi", "ho")'
+dfx deploy xtc history-e2e

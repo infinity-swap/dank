@@ -6,8 +6,11 @@ use ic_kit::{
     candid::{CandidType, Nat},
     ic,
 };
+use ic_kit::macros::*;
+use ic_kit::{get_context, Context, Principal};
+use crate::management::*;
 
-#[derive(CandidType)]
+#[derive(CandidType, Clone)]
 pub struct TokenMetaData<'a> {
     pub name: &'a str,
     pub symbol: &'a str,
@@ -15,14 +18,48 @@ pub struct TokenMetaData<'a> {
     pub features: Vec<&'a str>,
 }
 
+
+impl Default for TokenMetaData<'static> {
+    fn default() -> TokenMetaData<'static>  {
+        TokenMetaData {
+            name: "Cycles",
+            symbol: "XTC",
+            decimal: 12,
+            features: vec!["history"],
+        }
+    }
+}
+
+#[derive(CandidType)]
+pub struct InitArgs<'a> {
+    pub name: &'a str,
+    pub symbol: &'a str,
+}
+
+fn string_to_static_str(s: String) -> &'static str {
+    Box::leak(s.into_boxed_str())
+}
+
+// todo  -> we want to save this ...
+#[init]
+fn init(name: String, symbol: String) {
+        let ic = get_context();
+        let meta = ic.get_mut::<TokenMetaData>();
+        meta.name = string_to_static_str(name);
+        meta.symbol = string_to_static_str(symbol);
+        Controller::load_if_not_present(ic.caller());
+
+}
+
+
+
+
+
 #[query]
 pub fn meta() -> TokenMetaData<'static> {
-    TokenMetaData {
-        name: "Cycles",
-        symbol: "XTC",
-        decimal: 12,
-        features: vec!["history"],
-    }
+    let ic = get_context();
+    let meta = ic.get::<TokenMetaData>();
+    return meta.clone();
 }
 
 #[query(name = "getMetadata")]

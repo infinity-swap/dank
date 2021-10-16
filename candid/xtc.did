@@ -164,7 +164,7 @@ type ResultSend = variant {
     Err: text;
 };
 
-service : {
+service: (text, text) -> {
 
    ////////// BEGIN ERC-20 //////////
    allowance: (principal, principal) -> (nat) query;

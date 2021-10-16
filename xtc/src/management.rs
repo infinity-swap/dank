@@ -33,12 +33,6 @@ impl Controller {
     }
 }
 
-#[init]
-fn init() {
-    let ic = get_context();
-    Controller::load_if_not_present(ic.caller());
-}
-
 // --- halt
 
 pub struct IsShutDown(bool);
