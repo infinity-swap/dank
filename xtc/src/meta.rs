@@ -15,6 +15,7 @@ pub struct TokenMetaData<'a> {
     pub name: &'a str,
     pub symbol: &'a str,
     pub decimal: u8,
+    pub fee: u64,
     pub features: Vec<&'a str>,
 }
 
@@ -25,6 +26,7 @@ impl Default for TokenMetaData<'static> {
             name: "Cycles",
             symbol: "XTC",
             decimal: 12,
+            fee: compute_fee(0),
             features: vec!["history"],
         }
     }
@@ -47,6 +49,7 @@ fn init(name: String, symbol: String) {
         let meta = ic.get_mut::<TokenMetaData>();
         meta.name = string_to_static_str(name);
         meta.symbol = string_to_static_str(symbol);
+        meta.fee = compute_fee(0);
         Controller::load_if_not_present(ic.caller());
 
 }

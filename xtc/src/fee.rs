@@ -2,7 +2,7 @@
 /// should guarantee that for an amount A > B, compute_fee(A) >= compute_fee(B).
 #[cfg(not(test))]
 pub fn compute_fee(_: u64) -> u64 {
-    2_000_000_000
+    5
 }
 
 // Used for testing.

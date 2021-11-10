@@ -141,6 +141,7 @@ type TokenMetaData = record {
     name    : text;
     symbol  : text;
     decimal : nat8;
+    fee : nat64;
     features: vec text;
 };
 

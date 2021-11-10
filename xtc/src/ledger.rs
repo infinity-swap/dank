@@ -12,7 +12,7 @@ use serde::*;
 use std::collections::HashMap;
 use std::convert::TryInto;
 
-pub static DEFAULT_BALANCE: u64 = 200;
+pub static DEFAULT_BALANCE: u64 = 2_000_000;
 
 #[derive(Default)]
 pub struct Ledger {
